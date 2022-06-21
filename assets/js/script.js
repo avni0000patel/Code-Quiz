@@ -24,7 +24,7 @@ function startQuiz() {
     }, 1000);
     
     function sendMessage() {
-        timerEl.textContent = "Time is up!";
+        timerEl.textContent = "Game over!";
     }
 
 }
