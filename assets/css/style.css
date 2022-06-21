@@ -1,0 +1,25 @@
+:root {
+    --dark: #000000;
+    --light: #ffffff;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--light);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.highscores, .timer {
+    display: inline;
+}
+
+.container {
+    text-align: center;
+}
