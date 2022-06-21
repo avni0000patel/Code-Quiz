@@ -12,9 +12,15 @@ function setTime() {
         if(secondsLeft === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
+            // Calls function to create and append message
+            sendMessage();
         }
 
     }, 1000);
+
+    function sendMessage() {
+        timerEl.textContent = "Time is up!";
+    }
 }
 
 setTime();
