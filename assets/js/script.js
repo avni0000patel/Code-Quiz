@@ -27,4 +27,5 @@ startBtn.addEventListener("click", function() {
     }
     
     setTime();
+ 
 });
