@@ -175,9 +175,6 @@ var myQuestions = [
     }
 ];
 
-// var randomQuestion = Math.floor(Math.random() * myQuestions.length);
-// var chosenQuestion = myQuestions[randomQuestion];
-
 var questionIndex = 0;
 var chosenQuestion = myQuestions[questionIndex];
 
@@ -223,30 +220,42 @@ function showQuestion() {
     console.log(chosenQuestion.question);
     console.log(chosenQuestion.answers);
 
-    questionEl.textContent = chosenQuestion.question;
-    buttonA.textContent = "a: " + chosenQuestion.answers.a;
-    buttonB.textContent = "b: " + chosenQuestion.answers.b;
-    buttonC.textContent = "c: " + chosenQuestion.answers.c;
-    buttonD.textContent = "d: " + chosenQuestion.answers.d;
+    if(questionIndex < myQuestions.length) {
+        questionEl.textContent = chosenQuestion.question;
+        buttonA.textContent = "a: " + chosenQuestion.answers.a;
+        buttonB.textContent = "b: " + chosenQuestion.answers.b;
+        buttonC.textContent = "c: " + chosenQuestion.answers.c;
+        buttonD.textContent = "d: " + chosenQuestion.answers.d;
+    }
 
 }
 
-// function buttonOn() {
-//     // correctAnswerEl.textContent = chosenQuestion.correctAnswer;
-//     correct = myQuestions[randomQuestion].correctAnswer; 
-//     console.log(correct);
-//     if (document.getElementById("a").click && "a" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else if (document.getElementById("b").click && "b" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else if (document.getElementById("c").click && "c" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else if (document.getElementById("d").click && "d" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else {
-//         document.getElementById("correctAnswer").innerHTML = "Not Correct";
-//     }
-// }
+function buttonOn(event) {
+    console.log(event.target.id);
+    // correctAnswerEl.textContent = chosenQuestion.correctAnswer;
+    correct = myQuestions[questionIndex].correctAnswer; 
+    userChoiceA = chosenQuestion.answers.a;
+    userChoiceB = chosenQuestion.answers.b;
+    userChoiceC = chosenQuestion.answers.c;
+    userChoiceD = chosenQuestion.answers.d;
+    console.log(correct);
+    // if the user clicked button A and correct answer is A, return choice A
+    if (event.target.id === "a" && correct === "a") {
+        console.log(userChoiceA);
+        document.getElementById("correctAnswer").innerHTML = "Choice A is correct!";
+    } else if (event.target.id === "b" && correct === "b") {
+        console.log(userChoiceB);
+        document.getElementById("correctAnswer").innerHTML = "Choice B is correct!";
+    } else if (event.target.id === "c" && correct === "c") {
+        console.log(userChoiceC);
+        document.getElementById("correctAnswer").innerHTML = "Choice C is correct!";
+    } else if (event.target.id === "d" && correct === "d") {
+        console.log(userChoiceD);
+        document.getElementById("correctAnswer").innerHTML = "Choice D is correct!";
+    } else {
+        document.getElementById("correctAnswer").innerHTML = "Not Correct";
+    }
+}
 
 startBtn.addEventListener("click", startQuiz);
 
@@ -257,3 +266,6 @@ startBtn.addEventListener("click", startQuiz);
 // buttonC.addEventListener("click", buttonOn);
 
 // buttonD.addEventListener("click", buttonOn);
+
+var answerButtons = document.querySelector("#answerButtons");
+answerButtons.addEventListener("click", buttonOn);
