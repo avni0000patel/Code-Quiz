@@ -1,26 +1,4 @@
-var correct;
-
-var timerEl = document.querySelector(".timer");
-
-var startBtn = document.querySelector(".start");
-
-var quiz = document.querySelector(".quiz");
-
-var introduction = document.querySelector(".introduction");
-
-var questionEl = document.querySelector(".question");
-
-var buttonA = document.querySelector(".a");
-
-var buttonB = document.querySelector(".b");
-
-var buttonC = document.querySelector(".c");
-
-var buttonD = document.querySelector(".d");
-
-var correctAnswerEl = document.querySelector(".correctAnswer");
-
-var secondsLeft = 60;
+let questionEl = document.getElementById("question");
 
 var myQuestions = [
     {
@@ -175,85 +153,26 @@ var myQuestions = [
     }
 ];
 
-// var randomQuestion = Math.floor(Math.random() * myQuestions.length);
-// var chosenQuestion = myQuestions[randomQuestion];
-
-var questionIndex = 0;
-var chosenQuestion = myQuestions[questionIndex];
-
-function introPage() {
-    quiz.style.display = "none";
-}
-
-introPage();
-
-function startQuiz() {
-    // Clear intructions
-    quiz.style.display = "block";
-    introduction.style.display = "none";
-
-    timer();
-    showQuestion();
-}
-
-function timer() {
-    // Timer
-    // Sets interval in variable
-    var timerInterval = setInterval(function () {
-        secondsLeft--; // Decrement by 1
-        timerEl.textContent = "Time: " + secondsLeft + " seconds";
-
-        if (secondsLeft === 0) {
-            // Stops execution of action at set interval
-            clearInterval(timerInterval);
-            // Calls function to create and append message
-            sendMessage();
-        }
-
-    }, 1000);
-
-    function sendMessage() {
-        timerEl.textContent = "Game over!";
-    }
-
-}
+let questionIndex = 0;
 
 function showQuestion() {
-    console.log(chosenQuestion);
-    console.log(chosenQuestion.question);
-    console.log(chosenQuestion.answers);
-
-    questionEl.textContent = chosenQuestion.question;
-    buttonA.textContent = "a: " + chosenQuestion.answers.a;
-    buttonB.textContent = "b: " + chosenQuestion.answers.b;
-    buttonC.textContent = "c: " + chosenQuestion.answers.c;
-    buttonD.textContent = "d: " + chosenQuestion.answers.d;
-
+  if (questionIndex >= myQuestions.length) return;
+  var chosenQuestion = myQuestions[questionIndex];
+  questionEl.innerHTML = chosenQuestion.question;
+  Object.entries(chosenQuestion.answers).forEach(([letter,text]) => {
+    var but = document.getElementById(letter);
+    but.innerHTML = text
+    but.dataset.correct = chosenQuestion.correctAnswer === letter;
+  })
+  questionIndex++;
 }
+showQuestion()
 
-// function buttonOn() {
-//     // correctAnswerEl.textContent = chosenQuestion.correctAnswer;
-//     correct = myQuestions[randomQuestion].correctAnswer; 
-//     console.log(correct);
-//     if (document.getElementById("a").click && "a" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else if (document.getElementById("b").click && "b" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else if (document.getElementById("c").click && "c" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else if (document.getElementById("d").click && "d" === correct) {
-//         document.getElementById("correctAnswer").innerHTML = "Correct";
-//     } else {
-//         document.getElementById("correctAnswer").innerHTML = "Not Correct";
-//     }
-// }
+document.getElementById("buts").addEventListener("click", function(e) {
+  const tgt = e.target;
+  if (tgt.type && tgt.type === "button") {
+    document.getElementById("result").innerText = tgt.dataset.correct === "true" ? "Correct" : "Incorrect";
+  }
+})
 
-startBtn.addEventListener("click", startQuiz);
-
-// buttonA.addEventListener("click", buttonOn);
-
-// buttonB.addEventListener("click", buttonOn);
-
-// buttonC.addEventListener("click", buttonOn);
-
-// buttonD.addEventListener("click", buttonOn);
+document.getElementById("next").addEventListener("click", showQuestion);
