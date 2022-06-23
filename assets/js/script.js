@@ -2,7 +2,9 @@ var timerEl = document.querySelector(".timer");
 
 var startBtn = document.querySelector(".start");
 
-var container = document.querySelector(".container");
+var quiz = document.querySelector(".quiz");
+
+var introduction = document.querySelector(".introduction");
 
 var questionEl = document.querySelector(".question");
 
@@ -10,6 +12,8 @@ var buttonA = document.querySelector(".a");
 var buttonB = document.querySelector(".b");
 var buttonC = document.querySelector(".c");
 var buttonD = document.querySelector(".d");
+
+var correctAnswerEl = document.querySelector(".correctAnswer");
 
 var secondsLeft = 60;
 
@@ -166,9 +170,19 @@ var myQuestions = [
     }
 ];
 
+var randomQuestion = Math.floor(Math.random() * myQuestions.length);
+var chosenQuestion = myQuestions[randomQuestion];
+
+function introPage () {
+    quiz.style.display = "none";
+}
+
+introPage();
+
 function startQuiz() {
     // Clear intructions
-    container.style.display = "none";
+    quiz.style.display = "block";
+    introduction.style.display = "none";
 
     timer();
     showQuestion();
@@ -197,15 +211,11 @@ function timer() {
 }
 
 function showQuestion() {
-    var randomQuestion = Math.floor(Math.random() * myQuestions.length);
-    chosenQuestion = myQuestions[randomQuestion];
-
     console.log(chosenQuestion);
     console.log(chosenQuestion.question);
     console.log(chosenQuestion.answers);
-
+    
     questionEl.textContent = chosenQuestion.question;
-
     buttonA.textContent = "a: " + chosenQuestion.answers.a;
     buttonB.textContent = "b: " + chosenQuestion.answers.b;
     buttonC.textContent = "c: " + chosenQuestion.answers.c;
@@ -213,5 +223,16 @@ function showQuestion() {
 
 }
 
+function checkAnswer() {
+    correctAnswerEl.textContent = chosenQuestion.correctAnswer;
+}
+
 startBtn.addEventListener("click", startQuiz);
 
+buttonA.addEventListener("click", checkAnswer);
+
+buttonB.addEventListener("click", checkAnswer);
+
+buttonC.addEventListener("click", checkAnswer);
+
+buttonD.addEventListener("click", checkAnswer);
