@@ -20,6 +20,8 @@ var buttonC = document.querySelector(".c");
 
 var buttonD = document.querySelector(".d");
 
+var answerButtons = document.querySelector("#answerButtons");
+
 var correctAnswerEl = document.querySelector(".correctAnswer");
 
 var myQuestions = [
@@ -112,66 +114,6 @@ var myQuestions = [
             d: "Global and Local"
         },
         correctAnswer: "d"
-    },
-    {
-        question: "As a developer, I want to be able to remove the last element of my array and I want to also be able to add a new element to the beginning of my array. Which two array methods should I use?",
-        answers: {
-            a: "forEach() and pop()",
-            b: "concat() and shift()",
-            c: "push() and sort()",
-            d: "pop() and unshift()"
-        },
-        correctAnswer: "d"
-    },
-    {
-        question: "How do we access a value stored in an object?",
-        answers: {
-            a: "Dot notation, Curl bracket notation",
-            b: "Equal notation, Abstract notation",
-            c: "Dot notation, Bracket notation",
-            d: "Period notation, Square bracket notation"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "What is an object method?",
-        answers: {
-            a: "Keys in an object that have a number assigned to it",
-            b: "A function that takes an object for an argument",
-            c: "A function associated with an object",
-            d: "An array saved inside of an object"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "What is the purpose of the 'This' operator?",
-        answers: {
-            a: "This' keyword allows us to specify certain variables to it which can be used in the global scope.",
-            b: "This' is an array where we can easily store global variables for when we need access to them.",
-            c: "This' keyword lets us make a reference to our window gives us access to special object methods.",
-            d: "The keyword 'This' refers to the object it is in. 'This' changes based on which object it is in when being called."
-        },
-        correctAnswer: "d"
-    },
-    {
-        question: "We create a new branch off of our main branch with  'git branch test-branch'. How do we switch to our newly created branch?",
-        answers: {
-            a: "git merge test-branch",
-            b: "git checkout test-branch",
-            c: "git commit test-branch",
-            d: "git change test-branch"
-        },
-        correctAnswer: "b"
-    },
-    {
-        question: "From the reason listed below which is NOT true about JavaScript.",
-        answers: {
-            a: "JavaScript increases interactivity of our websites.",
-            b: "Javascript allows developers to create richer interfaces for the users.",
-            c: "JavaScript lets provide the user immediate feedback upon an action.",
-            d: "JavaScripts handles numbers better than most programming languages."
-        },
-        correctAnswer: "d"
     }
 ];
 
@@ -199,7 +141,7 @@ function timer() {
         secondsLeft--; // Decrement by 1
         timerEl.textContent = "Time: " + secondsLeft + " seconds";
 
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0 || questionIndex > myQuestions.length) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
             // Calls function to create and append message
@@ -207,10 +149,10 @@ function timer() {
         }
 
     }, 1000);
+}
 
-    function sendMessage() {
-        timerEl.textContent = "Game over!";
-    }
+function sendMessage() {
+    timerEl.textContent = "Game over!";
 }
 
 function showQuestion() {
@@ -219,6 +161,8 @@ function showQuestion() {
     console.log(chosenQuestion);
     console.log(chosenQuestion.question);
     console.log(chosenQuestion.answers);
+    console.log(questionIndex);
+    console.log(myQuestions.length);
 
     if(questionIndex < myQuestions.length) {
         questionEl.textContent = chosenQuestion.question;
@@ -227,7 +171,6 @@ function showQuestion() {
         buttonC.textContent = "c: " + chosenQuestion.answers.c;
         buttonD.textContent = "d: " + chosenQuestion.answers.d;
     }
-
 }
 
 function buttonOn(event) {
@@ -277,5 +220,4 @@ function buttonOn(event) {
 
 startBtn.addEventListener("click", startQuiz);
 
-var answerButtons = document.querySelector("#answerButtons");
 answerButtons.addEventListener("click", buttonOn);
