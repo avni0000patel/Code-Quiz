@@ -10,6 +10,8 @@ var question = document.querySelector(".question");
 
 var finalScore = document.querySelector("#finalScore");
 
+var score = document.querySelector("#score")
+
 var highScores = document.querySelector("#highScores");
 
 var initials = document.querySelector("#initials");
@@ -18,7 +20,7 @@ var scoreListEl = document.querySelector("#scoreList");
 
 var scoreList = [];
 
-
+// Buttons
 var viewHighScore = document.querySelector("#viewHighScore");
 
 var start = document.querySelector("#start");
@@ -38,9 +40,6 @@ var submitScore = document.querySelector("#submitScore");
 var goBack = document.querySelector("#goBack");
 
 var clearScore = document.querySelector("#clearScore");
-
-
-
 
 var myQuestions = [
     {
@@ -251,13 +250,13 @@ function addScore(event) {
 }
 
 function storeScores() {
-      // Stringify and set key in localStorage to scoreList array
+    // Stringify and set key in localStorage to scoreList array
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
     console.log(scoreList);
 }
 
 function displayScores() {
-      // Get stored scoreList from localStorage
+    // Get stored scoreList from localStorage
     var storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
     console.log(storedScoreList);
 

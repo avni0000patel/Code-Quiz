@@ -3,6 +3,10 @@
     --light: #ffffff;
 }
 
+* {
+    text-align: center;
+}
+
 body {
     background-color: var(--dark);
     color: var(--light);
@@ -20,16 +24,7 @@ body {
     display: inline;
 }
 
-.introduction {
-    text-align: center;
-}
-
-.quiz {
-    text-align: center;
-}
-
 .answerButtons {
     display: flex;
     flex-direction: column;;
 }
-
