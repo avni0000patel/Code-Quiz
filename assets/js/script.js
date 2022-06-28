@@ -123,8 +123,6 @@ function timer() {
         if (secondsLeft <= 0 || questionIndex >= myQuestions.length) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Calls function to create and append message
-            // sendMessage();
             quiz.style.display = "none";
             finalScore.style.display = "block";
 
@@ -132,10 +130,6 @@ function timer() {
         }
 
     }, 1000);
-}
-
-function sendMessage() {
-    time.textContent = "Game over!";
 }
 
 function showQuestion() {
