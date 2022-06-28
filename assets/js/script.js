@@ -157,7 +157,6 @@ function showQuestion() {
 
 function buttonOn(event) {
     var chosenQuestion = myQuestions[questionIndex];
-
     var correct = myQuestions[questionIndex].correctAnswer;
 
     console.log(event.target.id);
@@ -167,6 +166,7 @@ function buttonOn(event) {
     userChoiceB = chosenQuestion.answers.b;
     userChoiceC = chosenQuestion.answers.c;
     userChoiceD = chosenQuestion.answers.d;
+
     // if the user clicked button and correct answer is that button, return that button is correct
     if (event.target.id === "a" && correct === "a") {
         console.log(userChoiceA);
@@ -203,7 +203,6 @@ function buttonOn(event) {
 }
 
 function final(event) {
-
     finalScore.style.display = "block";
     highScores.style.display = "none";
 
@@ -223,9 +222,11 @@ function addScore(event) {
     var together = initialsValue + scoreNumber;
     console.log(together);
 
+    // Add new initialsValue + scoreNumber to scoreList array
     scoreList.push(together);
     console.log(scoreList);
 
+    // Sort from highest to lowest score
     scoreList = scoreList.sort(function(a, b) {
         if(a > b) return -1;
         if(a < b) return 1;
@@ -233,8 +234,10 @@ function addScore(event) {
 
     console.log(scoreList);
 
-
+    // Clear scoreListEl
     scoreListEl.innerHTML = "";
+
+    // Render a new li for each list
     for (i = 0; i < scoreList.length; i++) {
         var theScoreList = scoreList[i];
 
@@ -260,6 +263,7 @@ function displayScores() {
     var storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
     console.log(storedScoreList);
 
+    // If scoreList were retrieved from localStorage, update the scoreList array to it
     if (storedScoreList !== null) {
         scoreList = storedScoreList;
     }
@@ -270,6 +274,7 @@ function clear() {
     scoreListEl.innerHTML = "";
 }
 
+// Event listeners
 viewHighScore.addEventListener("click", function () {
     if (highScores.style.display === "none") {
         highScores.style.display = "block";
