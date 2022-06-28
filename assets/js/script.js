@@ -219,7 +219,7 @@ function addScore(event) {
 
     var scoreNumber = secondsLeft;
     var initialsValue = initials.value.toUpperCase();
-    var together = initialsValue + scoreNumber;
+    var together = initialsValue + " - " + scoreNumber;
     console.log(together);
 
     // Add new initialsValue + scoreNumber to scoreList array
