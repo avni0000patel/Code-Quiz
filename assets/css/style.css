@@ -23,3 +23,13 @@ body {
 .introduction {
     text-align: center;
 }
+
+.quiz {
+    text-align: center;
+}
+
+.answerButtons {
+    display: flex;
+    flex-direction: column;;
+}
+

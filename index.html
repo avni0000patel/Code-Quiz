@@ -1,44 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="stylesheet" href="./assets/css/style.css" />
-        <title>Code Quiz</title>
-    </head>
-    <body>
-        <header>
-            <div class="top">
-                <button id="highscores" class="highscores">
-                    High Scores
-                </button> 
-                <div id="timer" class="timer">
-                    Time: 60 seconds 
-                </div> 
-            </div>
-        </header>
-        <div class="introduction">
-            <h1>
-                Code Quiz
-            </h1>
-            <p>
-                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-            </p>
-            <button id="start" class="start">
-                Start Quiz 
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8" />
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+    <meta http-equiv = "X-UA-Compatible" content = "ie=edge" />
+    <link rel = "stylesheet" href = "./assets/css/style.css" />
+    <title>Code Quiz</title>
+</head>
+
+<body>
+    <header>
+        <div id = "top" class = "top">
+            <button id = "viewHighScore" class = "viewHighScore">
+                High Scores
             </button>
-        </div>
-        <div class="quiz">
-            <p id="question" class="question"></p>
-            <div id = "answerButtons">
-                <button id="a" class="a"></button>
-                <button id="b" class="b"></button>
-                <button id="c" class="c"></button>
-                <button id="d" class="d"></button>
+            <div id = "time" class = "time">
+                Time: 60 seconds
             </div>
-            <p id="correctAnswer" class="correctAnswer"></p>
         </div>
-        <script src="./assets/js/script.js"></script>
-    </body>
+    </header>
+
+    <div id = "introduction" class = "introduction">
+        <h1>
+            Code Quiz
+        </h1>
+        <p>
+            Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+            answers will penalize your score/time by ten seconds!
+        </p>
+        <button id = "start" class = "start">
+            Start Quiz
+        </button>
+    </div>
+
+    <div id = "quiz" class = "quiz">
+        <p id = "question" class = "question"></p>
+        <div id = "answerButtons" class = "answerButtons">
+            <button id = "a" class = "a"></button>
+            <button id = "b" class = "b"></button>
+            <button id = "c" class = "c"></button>
+            <button id = "d" class = "d"></button>
+        </div>
+    </div>
+
+    <div id = "finalScore">
+        <h2>All done!</h2>
+        <div id = "score" class = "score">Your final score is: </div>
+        <p id = "enterInitials" class = "enterInitials"> Enter initials: 
+            <input type = "text" placeholder = "Your Initials" name = "initials" id = "initials" class = "initials"/>
+            <button id = "submitScore" class = "submitScore">Submit</button>
+        </p>
+    </div>
+
+    <div id = "highScores">
+        <h2>High Scores</h2>
+        <ol id = "scoreList">
+        </ol>
+        <button id = "goBack" class = "goBack">Go back</button>
+        <button id = "clearScore" class = "clearScore">Clear high scores</button>
+    </div>
+
+    <script src = "./assets/js/script.js"></script>
+</body>
+
 </html>
