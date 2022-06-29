@@ -20,13 +20,15 @@ body {
     padding-right: 10px;
 }
 
-.highscores, .timer {
+.highscores,
+.timer {
     display: inline;
 }
 
 .answerButtons {
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
+    ;
 }
 
 ol {
