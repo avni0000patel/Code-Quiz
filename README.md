@@ -4,5 +4,11 @@ In this project I have created a code quiz because coding assessments are an imp
 https://github.com/avni0000patel
 ## GitHub Pages Link
 https://avni0000patel.github.io/Code-Quiz/
+## Technologies Used
+HTML - creates the structure of Web pages
+
+CSS - creates the presentation of Web pages
+
+Javascript - creates a dynamic and interactive experience for the user
 ## Screenshot
 ![avni0000patel github io_git-challenge04_](https://user-images.githubusercontent.com/104175474/176277063-1d582bbc-a21d-4c68-967a-d2ae68a5e1a6.png)
