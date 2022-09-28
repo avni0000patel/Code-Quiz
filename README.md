@@ -1,5 +1,5 @@
 # Code Quiz
-In this project I have created a code quiz. Employers use coding assessments to filter out candidates who did not meet the score requirment during an interview process.  
+In this project I have created a code quiz because coding assessments are an important part of the interview process for developers. Employers use coding assessments to filter out candidates who did not meet the score requirment during an interview process.  
 ## GitHub Link
 https://github.com/avni0000patel
 ## GitHub Pages Link
